@@ -28,7 +28,12 @@ class PlatformIcons {
   PlatformIcons(this.context);
 
   final BuildContext context;
-
+  /// Icons: Icons.add : CupertinoIcons.add : FluentIcons.locale_language
+  IconData get language => const _PlatformIconDelegate(
+        Icons.language,
+        CupertinoIcons.globe,
+        FluentIcons.locale_language,
+      ).nativeIcon(context);
   /// Icons: Icons.account_circle : CupertinoIcons.person_crop_circle
   IconData get accountCircle => const _PlatformIconDelegate(
         Icons.account_circle_outlined,
