@@ -660,7 +660,7 @@ class PlatformTextFormField extends PlatformWidgetBase<
       initialValue: data?.initialValue ?? initialValue,
       placeholder: hintText,
       focusNode: data?.focusNode ?? focusNode,
-      decoration: WidgetStateProperty<data?.decoration?>?,
+      decoration: data?.decoration != null ? WidgetStateProperty(data.decoration) : null,
       keyboardType: data?.keyboardType ?? keyboardType,
       textCapitalization: data?.textCapitalization ??
           textCapitalization ??
