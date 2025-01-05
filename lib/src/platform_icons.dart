@@ -28,12 +28,6 @@ class PlatformIcons {
   PlatformIcons(this.context);
 
   final BuildContext context;
-  /// Icons: Icons.remove : CupertinoIcons.delete : FluentIcons.delete
-  IconData get delete => const _PlatformIconDelegate(
-        Icons.remove,
-        CupertinoIcons.delete,
-        FluentIcons.delete,
-      ).nativeIcon(context);
   /// Icons: Icons.save : CupertinoIcons.floppy_disk : FluentIcons.save
   IconData get save => const _PlatformIconDelegate(
         Icons.save,
