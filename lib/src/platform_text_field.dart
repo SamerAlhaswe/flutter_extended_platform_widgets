@@ -804,7 +804,7 @@ class PlatformTextField extends PlatformWidgetBase<
           textCapitalization ??
           TextCapitalization.none,
       textInputAction: data?.textInputAction ?? textInputAction,
-      decoration: data?.decoration,
+      decoration: WidgetStateProperty.all(data!.decoration!),
       textDirection: data?.textDirection,
       dragStartBehavior: data?.dragStartBehavior ??
           dragStartBehavior ??
