@@ -4,7 +4,6 @@ import 'package:fluent_ui/fluent_ui.dart' show FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart' as microsoft;
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart' show Icons;
-import 'package:flutter/services.dart' show PlatformException;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_extended_platform_widgets/src/platform.dart';
 
@@ -28,6 +27,18 @@ class PlatformIcons {
   PlatformIcons(this.context);
 
   final BuildContext context;
+  /// Icons: Icons.currency_exchange : CupertinoIcons.money_dollar_circle_fill : FluentIcons.currency_dollar_euro_24_filled
+  IconData get currencyExchangeFilled => const _PlatformIconDelegate(
+    Icons.currency_exchange,
+    CupertinoIcons.money_dollar_circle_fill,
+    microsoft.FluentIcons.currency_dollar_euro_24_filled,
+  ).nativeIcon(context);
+  /// Icons: Icons.currency_exchange_outlined : CupertinoIcons.money_dollar_circle : FluentIcons.currency_dollar_euro_24_regular
+  IconData get currencyExchangeOutlined => const _PlatformIconDelegate(
+    Icons.currency_exchange_outlined,
+    CupertinoIcons.money_dollar_circle,
+    microsoft.FluentIcons.currency_dollar_euro_24_regular,
+  ).nativeIcon(context);
   /// Icons: Icons.save : CupertinoIcons.floppy_disk : FluentIcons.save
   IconData get save => const _PlatformIconDelegate(
         Icons.save,
@@ -842,6 +853,12 @@ class PlatformIcons {
         CupertinoIcons.shopping_cart,
         FluentIcons.shopping_cart_solid,
       ).nativeIcon(context);
+  /// Icons: Icons.shopping_cart : CupertinoIcons.shopping_cart
+  IconData get shoppingCartOutline => const _PlatformIconDelegate(
+        Icons.shopping_cart_outlined,
+        CupertinoIcons.shopping_cart, // There is no filled version 
+        FluentIcons.shopping_cart,
+      ).nativeIcon(context);
 
   /// Icons: Icons.shuffle : CupertinoIcons.shuffle
   IconData get shuffle => const _PlatformIconDelegate(
@@ -1031,12 +1048,11 @@ class _PlatformIconDelegate {
   IconData nativeIcon(BuildContext buildContext) {
     if (Platform.isAndroid) {
       return materialIcon;
-    } else if (Platform.isIOS) {
+    } else if (Platform.isIOS || Platform.isMacOS) {
       return cupertinoIcon;
     } else if (Platform.isWindows) {
       return fluentIcon;
     }
-
-    throw PlatformException(code: 'Only android, cupertino, windows supported');
+    else return materialIcon; // Choose Material Icons for any other platform
   }
 }
