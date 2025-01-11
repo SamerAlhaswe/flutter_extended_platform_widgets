@@ -27,6 +27,18 @@ class PlatformIcons {
   PlatformIcons(this.context);
 
   final BuildContext context;
+  /// Icons: Icons.people_outline : CupertinoIcons.person_3 : FluentIcons.people_32_regular
+  IconData get poepleOutlined => const _PlatformIconDelegate(
+    Icons.people_outline,
+    CupertinoIcons.person_3,
+    microsoft.FluentIcons.people_32_regular,
+  ).nativeIcon(context);
+  /// Icons: Icons.people : CupertinoIcons.person_3_fill : FluentIcons.people_32_filled
+  IconData get peopleFilled => const _PlatformIconDelegate(
+    Icons.people,
+    CupertinoIcons.person_3_fill,
+    microsoft.FluentIcons.people_32_filled,
+  ).nativeIcon(context);
   /// Icons: Icons.currency_exchange : CupertinoIcons.money_dollar_circle_fill : FluentIcons.currency_dollar_euro_24_filled
   IconData get currencyExchangeFilled => const _PlatformIconDelegate(
     Icons.currency_exchange,
